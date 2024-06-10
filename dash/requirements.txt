@@ -1,2 +1,4 @@
 requests
 flask_cors
+uvicorn
+fastapi

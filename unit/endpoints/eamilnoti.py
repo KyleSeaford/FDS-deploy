@@ -4,7 +4,7 @@ import sqlite3
 from email.mime.text import MIMEText
 
 def getSetting(name):
-    conn = sqlite3.connect('sensordata.db')
+    conn = sqlite3.connect('/var/task/flask/sensordata.db')
     cursor = conn.cursor()
     cursor.execute(f'SELECT Svalue FROM Settings WHERE Sname = \'{name}\'')
     sVAl = cursor.fetchall()  

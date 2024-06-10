@@ -54,7 +54,7 @@ def current_time():
 
 
 # add the addresses of the units for the different zones
-zone1_addresses_full = ['cool-pond-4702.ploomberapp.io']
+zone1_addresses_full = ['unit-gamma.vercel.app']
 zone2_addresses_full = ['']
 zone3_addresses_full = ['']
 zone4_addresses_full = ['']
