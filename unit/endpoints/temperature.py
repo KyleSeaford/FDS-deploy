@@ -88,11 +88,3 @@ class HelloWorld(Resource):
         global sent
         sent = False
         return {'message': 'Notifications reset successfully'}
-
-# endpoint to stop the temperature data addition
-@api.route('/Stop', doc={"description": "Stop the temperature data addition"})
-class Stop(Resource):
-    def get(self):
-        data_adder.stop()
-        data_adder.join()  # Ensure the thread has finished
-        return {'message': 'Temperature data addition stopped successfully'}

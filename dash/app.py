@@ -54,7 +54,7 @@ def current_time():
 
 
 # add the addresses of the units for the different zones
-zone1_addresses_full = ['192.168.127.133', '192.168.127.134']
+zone1_addresses_full = ['rough-snowflake-4885.ploomberapp.io']
 zone2_addresses_full = ['']
 zone3_addresses_full = ['']
 zone4_addresses_full = ['']
@@ -75,9 +75,9 @@ unitaddresses_full = [address for address in zone1_addresses_full + zone2_addres
 @app.route('/notifications')
 def notifications():
     for unit in unitaddresses_full:
-        unitaddress_temp = 'http://' + unit + ':5500/Temp/Reset'
-        unitaddress_smoke = 'http://' + unit + ':5500/smoke/Reset'
-        unitaddress_rain = 'http://' + unit + ':5500/rain/Reset'
+        unitaddress_temp = 'https://' + unit + '/Temp/Reset'
+        unitaddress_smoke = 'https://' + unit + '/smoke/Reset'
+        unitaddress_rain = 'https://' + unit + '/rain/Reset'
         # reset the temperature, smoke and rain data
         requests.get(unitaddress_temp)
         requests.get(unitaddress_smoke)
@@ -95,7 +95,7 @@ def temp_int(unit):
 @app.route('/temp/<unit>')
 def temp_string(unit):
     # get the temperature from the unit
-    unitaddress = 'http://' + unit + ':5500/Temp/Temp'
+    unitaddress = 'https://' + unit + '/Temp/Temp'
     response = requests.get(unitaddress)
     return json.loads(response.text)
   
@@ -106,7 +106,7 @@ def temps():
 
     unitaddresses = unitaddresses_full
     for unit in unitaddresses:
-        unitaddress = 'http://' + unit + ':5500/Temp/Temp'
+        unitaddress = 'https://' + unit + '/Temp/Temp'
         response = requests.get(unitaddress)
 
         temp_data = json.loads(response.text)
@@ -122,7 +122,7 @@ def smoke_int(unit):
 @app.route('/smoke/<unit>')
 def smoke_string(unit):
     # get the smoke from the unit
-    unitaddress = 'http://' + unit + ':5500/smoke/smoke'
+    unitaddress = 'https://' + unit + '/smoke/smoke'
     response = requests.get(unitaddress)
     return json.loads(response.text)
 
@@ -133,7 +133,7 @@ def smokes():
 
     unitaddresses = unitaddresses_full
     for unit in unitaddresses:
-        unitaddress = 'http://' + unit + ':5500/smoke/smoke'
+        unitaddress = 'https://' + unit + '/smoke/smoke'
         response = requests.get(unitaddress)
 
         smoke_data = json.loads(response.text)
@@ -149,7 +149,7 @@ def rain_int(unit):
 @app.route('/rain/<unit>')
 def rain_string(unit):
     # get the smoke from the unit
-    unitaddress = 'http://' + unit + ':5500/rain/rain'
+    unitaddress = 'https://' + unit + '/rain/rain'
     response = requests.get(unitaddress)
     return json.loads(response.text)
   
@@ -160,7 +160,7 @@ def rains():
 
     unitaddresses = unitaddresses_full
     for unit in unitaddresses:
-        unitaddress = 'http://' + unit + ':5500/rain/rain'
+        unitaddress = 'https://' + unit + '/rain/rain'
         response = requests.get(unitaddress)
 
         rain_data = json.loads(response.text)
@@ -176,7 +176,7 @@ def camera_int(unit):
 @app.route('/camera/<unit>')
 def camera_string(unit):
     # get the smoke from the unit
-    unitaddress = 'http://' + unit + ':5500/camera/camera'
+    unitaddress = 'https://' + unit + '/camera/camera'
     return jsonify(unitaddress)
 
 
@@ -187,7 +187,7 @@ def cameras():
 
     unitaddresses = unitaddresses_full
     for unit in unitaddresses:
-        unitaddress = 'http://' + unit + ':5500/camera/camera'
+        unitaddress = 'https://' + unit + '/camera/camera'
 
         cameras.append({'unit': unit, 'camera': unitaddress})
     
@@ -201,7 +201,7 @@ def zone1temps():
 
     unitaddresses = zone1_addresses_full
     for unit in unitaddresses:
-        unitaddress = 'http://' + unit + ':5500/Temp/Temp'
+        unitaddress = 'https://' + unit + '/Temp/Temp'
         response = requests.get(unitaddress)
 
         temp_data = json.loads(response.text)
@@ -216,7 +216,7 @@ def zone1temps10():
     
         unitaddresses = zone1_addresses_full
         for unit in unitaddresses:
-            unitaddress = 'http://' + unit + ':5500/Temp/Temp10'
+            unitaddress = 'https://' + unit + '/Temp/Temp10'
             response = requests.get(unitaddress)
     
             temp_data = json.loads(response.text)
@@ -231,7 +231,7 @@ def zone1smokes():
 
     unitaddresses = zone1_addresses_full
     for unit in unitaddresses:
-        unitaddress = 'http://' + unit + ':5500/smoke/Smoke'
+        unitaddress = 'https://' + unit + '/smoke/Smoke'
         response = requests.get(unitaddress)
 
         smoke_data = json.loads(response.text)
@@ -246,7 +246,7 @@ def zone1smokes10():
 
     unitaddresses = zone1_addresses_full
     for unit in unitaddresses:
-        unitaddress = 'http://' + unit + ':5500/smoke/Smoke10'
+        unitaddress = 'https://' + unit + '/smoke/Smoke10'
         response = requests.get(unitaddress)
 
         smoke_data = json.loads(response.text)
@@ -262,7 +262,7 @@ def zone1rains():
 
     unitaddresses = zone1_addresses_full
     for unit in unitaddresses:
-        unitaddress = 'http://' + unit + ':5500/rain/Rain'
+        unitaddress = 'https://' + unit + '/rain/Rain'
         response = requests.get(unitaddress)
 
         rain_data = json.loads(response.text)
@@ -277,7 +277,7 @@ def zone1rains10():
 
     unitaddresses = zone1_addresses_full
     for unit in unitaddresses:
-        unitaddress = 'http://' + unit + ':5500/rain/Rain10'
+        unitaddress = 'https://' + unit + '/rain/Rain10'
         response = requests.get(unitaddress)
 
         rain_data = json.loads(response.text)
@@ -293,7 +293,7 @@ def zone1cameras():
     # Generate a new list of unit addresses on each request
     unitaddresses = zone1_addresses_full
     for unit in unitaddresses:
-        unitaddress = 'http://' + unit + ':5500/camera/camera'
+        unitaddress = 'https://' + unit + '/camera/camera'
 
         cameras.append({'unit': unit, 'camera': unitaddress})
     
@@ -303,9 +303,3 @@ def zone1cameras():
 # in the production version, the code for zone 2 will be similar to the code for zone 1
 # fill in the addresses of the units in zone 2
 zone2_addresses_full = ['']
-
-
-
-# MARK: ip and debug mode
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)

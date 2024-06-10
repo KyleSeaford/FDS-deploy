@@ -89,11 +89,3 @@ class HelloWorld(Resource):
         sent = False
         return {'message': 'Notifications reset successfully'}
 
-
-# endpoint to stop the smoke data addition
-@api.route('/Stop', doc={"description": "Stop the smoke data addition"})
-class Stop(Resource):
-    def get(self):
-        data_adder.stop()
-        data_adder.join()  # Ensure the thread has finished
-        return {'message': 'Smoke data addition stopped successfully'}
