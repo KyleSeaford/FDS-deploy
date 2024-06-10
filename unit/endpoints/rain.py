@@ -36,7 +36,7 @@ class DataAdder(threading.Thread):
 
             current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-            conn = sqlite3.connect('sensordata.db')
+            conn = sqlite3.connect('/srv/endpoints/sensordata.db')
             cursor = conn.cursor()
             cursor.execute('INSERT INTO Rain (Rain, Time) VALUES (?, ?)', (rain, current_time))
             conn.commit()
@@ -55,8 +55,26 @@ data_adder.start()
 @api.route('/Rain', doc={"description": "Get the Rain Percentage"})
 class HelloWorld(Resource):
     def get(self):
+        global sent
+        rain = random.randint(0, 100)
+
+        print("Rain: ", rain, "sent", sent)
+        # sends email if rain is above 20 and a notification has not been sent
+        if rain > 20 and sent == False:
+            print("Rain Percentage is above 20%")
+            send(f"A Rain Percentage of 20%+ has been detected.\nFailure to take immediate action may result in significant damage to property and wildlife.\nPlease navigate to your dashboard and take further action. *link to dashboard*", "URGENT: FireGuardPro Rain Alert")
+            sent = True
+
+        current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+        conn = sqlite3.connect('/srv/endpoints/sensordata.db')
+        cursor = conn.cursor()
+        cursor.execute('INSERT INTO Rain (Rain, Time) VALUES (?, ?)', (rain, current_time))
+        conn.commit()
+        conn.close()
+        
         # get last values from the database
-        conn = sqlite3.connect('sensordata.db')
+        conn = sqlite3.connect('/srv/endpoints/sensordata.db')
         cursor = conn.cursor()
         cursor.execute('SELECT `rain` FROM `Rain` ORDER BY `Time` DESC LIMIT 1')
         rains = cursor.fetchall()
@@ -73,7 +91,7 @@ class HelloWorld(Resource):
 class HelloWorld(Resource):
     def get(self):
         # get last values from the database
-        conn = sqlite3.connect('sensordata.db')
+        conn = sqlite3.connect('/srv/endpoints/sensordata.db')
         cursor = conn.cursor()
         cursor.execute('SELECT * FROM `Rain` ORDER BY `Time` DESC LIMIT 10')
         rains = cursor.fetchall()
