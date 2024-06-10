@@ -20,7 +20,3 @@ api.add_namespace(namespaceRain, path='/rain')
 api.add_namespace(namespaceCamera, path='/camera')
 api.add_namespace(namespaceSystemSettings, path='/systemsettings')
 api.add_namespace(namespaceStop, path='/stop')
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5500, debug=False)

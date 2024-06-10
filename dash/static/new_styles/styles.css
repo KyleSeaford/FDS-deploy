@@ -1,0 +1,258 @@
+/* MARK: Body styles */
+body {
+    background-color: #1e1e1e;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    overflow: hidden; /* Prevent scrollbars from appearing */
+}
+
+/* MARK: Header styles */
+header {
+    background-color: #282828;
+    position: fixed; /* Fixed position to stick to the viewport */
+    top: 57px; /* Align to the top of the viewport */
+    bottom: 0; /* Extend to the bottom of the viewport */
+    left: 0; /* Align to the left side of the viewport */
+    width: 200px; /* Adjust width as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+/* MARK: Navigation styles */
+nav, .tablink-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.tablink {
+    background-color: #282828;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 15px;
+    width: 200px;
+    height: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.151);
+    text-align: left;
+}
+
+.tablink:hover {
+    color: #0d95d5;
+}
+
+
+/* MARK: Button styles */
+.button-container {
+    display: flex;
+    align-items: center; /* Align items horizontally */
+}
+
+.settingsButton {
+    background-color: #282828;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid rgba(0, 0, 0, 0.151);
+    outline: none;
+    width: 150px;
+    height: 50px;
+    margin-right: 0px; /* Add margin between the buttons */
+    margin-bottom: 1px;
+}
+
+.settingsButton:hover {
+    background-color: #0d95b4 ;
+}
+
+.helpButton {
+    background-color: #282828;
+    color: orange;
+    cursor: help;
+    padding: 10px;
+    font-size: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.151);
+    outline: none;
+    width: 50px;
+    height: 50px;
+    margin-left: 0px; /* Add margin between the buttons */
+    margin-bottom: 1px;
+}
+
+.noti_badge {
+    position: fixed;
+    top: 68px;
+    right: 315px; /* Change right to left */
+    width: 10px;
+    height: 10px;
+    background: red;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    cursor: help;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.helpButton:hover {
+    background-color: #161414;
+}
+
+.unitButton {
+    background-color: #0095d5;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 15px;
+    border: none;
+    outline: none;
+    width: 200px;
+    height: 30px;
+    left: 0;
+    margin-bottom: 1px;
+}
+
+.unitButton:hover {
+    background-color: #0d95b4;
+}
+
+
+
+/* MARK: Info styles */
+.info-bar {
+    display: flex;
+    background-color: #111111;
+}
+
+.date-time, .geoData {
+    margin-left: 5px;
+    display: flex;
+    font-size: 13px;
+    color: white;
+    margin-top: 0.2%;
+}
+
+.date-time h4, .geoData h4 {
+    margin-right: 20px;
+}
+
+.n {
+    margin-right: auto;
+    margin-left: 20px;
+    margin-top: 3px;
+}
+
+
+/* MARK: name styles */
+.name-bar {
+    display: flex;
+    background-color: #282828;
+    margin-left: 200px;
+}
+
+.date-time2{
+    margin-left: 5px;
+    display: flex;
+    font-size: 13px;
+    color: white;
+}
+
+.date-time2 h4{
+    margin-right: 20px;
+}
+
+
+
+.n2 {
+    color: white;
+    font-size: 13px;
+    margin-left: 10px;
+    margin-right: auto;
+}
+
+/* MARK: Unit help styles */
+.unit-container {
+    position: absolute;
+    top: 630px;
+    right: 1720px;
+}
+
+.unit-table {
+    border-collapse: collapse;
+    width: 200px;
+}
+
+.unit-table th, .unit-table td {
+    border: 2px solid rgba(0, 0, 0, 0.151);
+    color: white;
+    padding: 8px;
+    text-align: left;
+    background-color: #282828;
+}
+
+.unit-table th {
+    background-color: #282828;
+}
+
+/* MARK: Main styles */
+h1, h2, h3 {
+    color: white;
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+/* MARK: Content styles */
+.tabcontent-container {
+    margin-left: 200px; /* Adjust margin to accommodate the fixed header width */
+
+}
+
+
+.color-box {
+    width: 105px;
+    height: 20px;
+    border: 1px solid #000;
+}
+
+
+/* MARK: moduler styles */
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
