@@ -7,14 +7,13 @@ import os
 
 api = Namespace('Camera', description='camera endpoint')
 
-
 @api.route('/camera', doc={"description": "take photo on camera"})
 class HelloWorld(Resource):
     def get(self):
         # list all images in the directory
         # change image_dir to the directory where the images are stored
-        image_dir = "../cameraimages/"
-        images = os.listdir(image_dir)
+        image_dir = os.path.dirname(__file__)
+        images = [img for img in os.listdir(image_dir) if img.endswith('.png')]
         random_image = random.choice(images)
         image_path = os.path.join(image_dir, random_image)
-        return send_file(image_path, mimetype='image/jpeg')
+        return send_file(image_path, mimetype='image/png')
