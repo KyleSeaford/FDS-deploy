@@ -77,6 +77,13 @@ function CreateZoneContentDiv(i) {
                 font-size: 0.7rem;
             }
         </style>
+
+        <script>
+            graphTemps();
+            graphSmokes();
+            graphRains();
+            fetchImageUrl();
+        </script>
     `;
     return zoneContentDiv;
 }
@@ -124,7 +131,12 @@ document.getElementById("settingsButton").addEventListener("click", function () 
         // Get the element with id="defaultOpen" and click on it
         console.log("Triggering default open tab (top)");
         document.getElementById("defaultOpen").click();
-        graphTemps();
+        setTimeout(() => {
+            graphTemps();
+            graphSmokes();
+            graphRains();
+            fetchImageUrl();
+        }, 0);
     } else {
         alert("Please enter a valid number of zones: 1 to 13.");
     }
@@ -144,7 +156,7 @@ function populateUnitTableWithColorBoxes(zoneNumber, descriptions) {
             `;
             unitTableBody.appendChild(newRow);
         }
-    }
+    }  
 }
 
 // Function to handle configuring units
@@ -183,6 +195,9 @@ function configureUnits(zoneNumber) {
 
         // Populate unit table with color boxes
         populateUnitTableWithColorBoxes(zoneNumber, unitColourList);
+
+        // reload the page
+        location.reload();
 
     } else {
         alert("Please enter a valid number of units: 0 to 5.");
@@ -230,6 +245,12 @@ document.addEventListener('DOMContentLoaded', function () {
         // Get the element with id="defaultOpen" and click on it
         console.log("Triggering default open tab (bottom)");
         document.getElementById("defaultOpen").click();
+        setTimeout(() => {
+            graphTemps();
+            graphSmokes();
+            graphRains();
+            fetchImageUrl();
+        }, 0);
 
         // Trigger click event for the first zone button (Zone 1)
         var firstZoneButton = document.querySelector(".tablink");

@@ -3,7 +3,7 @@ body {
     background-color: #1e1e1e;
     font-family: Arial, sans-serif;
     margin: 0;
-    overflow: hidden; /* Prevent scrollbars from appearing */
+    overflow: hidden;
 }
 
 /* MARK: Header styles */
@@ -176,8 +176,8 @@ nav, .tablink-container {
 /* MARK: Unit help styles */
 .unit-container {
     position: absolute;
-    top: 630px;
-    right: 1720px;
+    top: 70%;
+    left: 0%;
 }
 
 .unit-table {
@@ -255,4 +255,15 @@ h1, h2, h3 {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+
+@media(max-width:980px){
+    .container {
+        grid-template-columns: none !important;
+        margin-top: 5px !important;
+    }
+    .body {
+        overflow: auto !important;
+    }
 }
